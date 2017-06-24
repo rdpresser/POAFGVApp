@@ -32,7 +32,7 @@
 
 using Xamarin.Forms;
 
-namespace POAFGVApp.Theme
+namespace POAFGVApp
 {
     public static class MainTheme
     {

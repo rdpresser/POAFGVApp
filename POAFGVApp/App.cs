@@ -16,18 +16,25 @@ namespace POAFGVApp
 
         protected override void OnInitialized()
         {
-            throw new NotImplementedException();
+            NavigationService.NavigateAsync("LoginPage");
         }
 
         protected override void RegisterTypes()
         {
-            //registrar Views para navegação
-            Container.RegisterTypeForNavigation<LoginPage>();
-            Container.RegisterTypeForNavigation<NavigationPage>();
+            try
+            {
+                //registrar Views para navegação
+                Container.RegisterTypeForNavigation<LoginPage>();
+                Container.RegisterTypeForNavigation<NavigationPage>();
 
-            //Registrando IoC - Injeção de dependencia
-            Container.RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>), new ContainerControlledLifetimeManager());
-            Container.RegisterType(typeof(IBaseApplicationService<>), typeof(BaseApplicationService<>), new ContainerControlledLifetimeManager());
+                //Registrando IoC - Injeção de dependencia
+                Container.RegisterType(typeof(IBaseRepository<>), typeof(BaseRepository<>), new ContainerControlledLifetimeManager());
+                Container.RegisterType(typeof(IBaseApplicationService<>), typeof(BaseApplicationService<>), new ContainerControlledLifetimeManager());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
